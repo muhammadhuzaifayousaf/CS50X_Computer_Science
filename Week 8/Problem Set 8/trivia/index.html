@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function checkAnswer(button) {
+                const isCorrect = button.dataset.correct === "true";
+                const resultDiv = document.getElementById('part1-result');
+
+                // Reset all buttons and result text
+                document.querySelectorAll('.answer-btn').forEach(btn => {
+                    btn.style.backgroundColor = '';
+                });
+                resultDiv.textContent = '';
+
+                if (isCorrect) {
+                    button.style.backgroundColor = '#28a745'; // Green
+                    resultDiv.textContent = 'Correct!';
+                    resultDiv.style.color = '#28a745';
+                } else {
+                    button.style.backgroundColor = '#dc3545'; // Red
+                    resultDiv.textContent = 'Incorrect';
+                    resultDiv.style.color = '#dc3545';
+                }
+            }
+
+            function checkFreeResponse() {
+                const input = document.getElementById('free-response-input');
+                const answer = input.value.trim().toLowerCase();
+                const resultDiv = document.getElementById('part2-result');
+                const correctAnswer = 'william shakespeare';
+
+                // Reset styles and result text
+                input.style.backgroundColor = '';
+                resultDiv.textContent = '';
+
+                if (answer === correctAnswer) {
+                    input.style.backgroundColor = '#28a745';
+                    resultDiv.textContent = 'Correct!';
+                    resultDiv.style.color = '#28a745';
+                } else {
+                    input.style.backgroundColor = '#dc3545';
+                    resultDiv.textContent = 'Incorrect';
+                    resultDiv.style.color = '#dc3545';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the capital of France?</h3>
+                <button class="answer-btn" data-correct="true" onclick="checkAnswer(this)">Paris</button>
+                <button class="answer-btn" data-correct="false" onclick="checkAnswer(this)">London</button>
+                <button class="answer-btn" data-correct="false" onclick="checkAnswer(this)">Berlin</button>
+                <div id="part1-result"></div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Who wrote the play 'Romeo and Juliet'?</h3>
+                <input type="text" id="free-response-input">
+                <button onclick="checkFreeResponse()">Submit</button>
+                <div id="part2-result"></div>
+            </div>
+        </div>
+    </body>
+</html>
