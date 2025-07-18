@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Quote{% endblock %}
+{% block main %}
+<form action="/quote" method="post">
+    <input name="symbol" placeholder="Symbol" type="text" required>
+    <button type="submit">Get Quote</button>
+</form>
+{% if quote %}
+<p>{{ quote.name }} ({{ quote.symbol }}) is currently worth {{ quote.price | usd }}</p>
+{% endif %}
+{% endblock %}
