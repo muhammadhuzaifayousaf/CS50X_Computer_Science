@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+        <link rel="icon" type="image/png" href="/static/favicon.png">
+    </head>
+
+    <body>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li class="{% if 'failed' in message.lower() or 'delete' in message.lower() %}error{% else %}success{% endif %}">
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+
+        <div class="header">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <form action="/" method="post">
+                    <input name="name" placeholder="Name" type="text" required>
+                    <input name="month" placeholder="Month" type="number" min="1" max="12">
+                    <input name="day" placeholder="Day" type="number" min="1" max="31">
+                    <input type="submit" value="Add Birthday">
+                </form>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <caption>List of all saved birthdays</caption>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for birthday in birthdays %}
+                            <tr>
+                                <td>
+                                    <form action="/edit" method="post" style="display: inline;">
+                                        <input type="hidden" name="id" value="{{ birthday.id }}">
+                                        <input name="name" value="{{ birthday.name }}" type="text" placeholder="Name">
+                                    </td>
+                                    <td>
+                                        <input name="month" value="{{ birthday.month }}" type="number" min="1" max="12" style="width: 60px;">
+                                        /
+                                        <input name="day" value="{{ birthday.day }}" type="number" min="1" max="31" style="width: 60px;">
+                                    </td>
+                                    <td>
+                                        <button type="submit">Save</button>
+                                    </form>
+                                    <form action="/delete" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="{{ birthday.id }}">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </body>
+
+</html>

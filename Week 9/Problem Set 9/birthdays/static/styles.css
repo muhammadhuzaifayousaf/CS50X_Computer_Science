@@ -1,0 +1,138 @@
+body {
+    background-color: #fff;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    width: 90%;
+    padding-bottom: 2rem;
+}
+
+.header {
+    background-color: #477bff;
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.section {
+    padding: 1rem 2rem;
+}
+
+.section:hover {
+    background-color: #f5f5f5;
+    transition: background-color 0.15s ease-in-out;
+}
+
+caption {
+    caption-side: top;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 1rem;
+}
+
+input[type="text"], input[type="number"] {
+    line-height: 1.8;
+    width: 25%;
+    padding: 0.3rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"]:hover, input[type="number"]:hover {
+    background-color: #f5f5f5;
+}
+
+button, input[type="submit"] {
+    background-color: #cce5ff;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 2px;
+    font-weight: 500;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #e6f0ff;
+}
+
+/* Red Delete button */
+form[action="/delete"] button {
+    background-color: #ffe5e5;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+form[action="/delete"] button:hover {
+    background-color: #ffd6d6;
+}
+
+/* Flash messages */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Table styling */
+table {
+    background-color: transparent;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #ccc;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: rgba(179, 208, 255, 0.3);
+}
